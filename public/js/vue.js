@@ -144,6 +144,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'categories', 'regions'],
   data: function data() {
@@ -13238,7 +13246,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/html/MonBonCoin/resources/js/vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! /var/www/html/Freeads/freeads/resources/js/vue.js */"./resources/js/vue.js");
 
 
 /***/ })

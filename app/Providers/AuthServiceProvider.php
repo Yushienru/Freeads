@@ -4,16 +4,13 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Policies\AdPolicy;
+use App\Models\Ad;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        Ad::class => AdPolicy::class
     ];
 
     /**
