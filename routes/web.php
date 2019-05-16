@@ -52,3 +52,9 @@ Route::prefix('annonces')->group(function () {
 Route::middleware('ajax')->group(function () {
     Route::post('message', 'UserController@message')->name('message');
 });
+
+Route::middleware('ajax')->group(function () {
+    Route::post('images-save', 'UploadImagesController@store')->name('save-images');
+    Route::delete('images-delete', 'UploadImagesController@destroy')->name('destroy-images');
+    Route::get('images-server','UploadImagesController@getServerImages')->name('server-images');
+});

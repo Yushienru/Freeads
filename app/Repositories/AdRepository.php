@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Repositories;
+
 use App\Models\Ad;
 use Carbon\Carbon;
+
 class AdRepository
 {
     /**
@@ -12,6 +15,7 @@ class AdRepository
     public function search($request)
     {
         $ads = Ad::query();
+
         if($request->region != 0) {
             $ads = Ad::whereHas('region', function ($query) use ($request) {
                 $query->where('regions.id', $request->region);
@@ -21,11 +25,13 @@ class AdRepository
                 return $query->where('commune', $request->commune);
             });
         }
+
         if($request->category != 0) {
             $ads->whereHas('category', function ($query) use ($request) {
                 $query->where('categories.id', $request->category);
             });
         }
+
         return $ads->with('category', 'photos')
             ->whereActive(true)
             ->latest()
@@ -40,5 +46,25 @@ class AdRepository
     public function getPhotos($ad)
     {
         return $ad->photos()->get();
+    }
+
+    /**
+     * Get an ad by id.
+     *
+     * @param integer $id
+     */
+    public function getById($id)
+    {
+        return Ad::findOrFail($id);
+    }
+
+    /**
+     * Create an ad.
+     *
+     * @param Array $data
+     */
+    public function create($data)
+    {
+        return Ad::create($data);
     }
 }
