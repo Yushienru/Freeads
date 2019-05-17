@@ -58,3 +58,7 @@ Route::middleware('ajax')->group(function () {
     Route::delete('images-delete', 'UploadImagesController@destroy')->name('destroy-images');
     Route::get('images-server','UploadImagesController@getServerImages')->name('server-images');
 });
+
+Route::prefix('admin')->middleware('admin')->group(function () {
+    Route::get('/', 'AdminController@index')->name('admin.index');
+});

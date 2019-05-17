@@ -21,6 +21,7 @@ $factory->define(App\Models\Ad::class, function (Faker $faker) {
         'category_id' => rand(1, 10),
         'region_id' => $region_id,
         'user_id' => rand(2, 3),
+        'prix' => rand(1, 100008),
         'departement' => $departement['code'],
         'commune' => $commune['code'],
         'commune_name' => $commune['nom'],

@@ -14,24 +14,24 @@ class CreateAdsTable extends Migration
     public function up()
     {
         Schema::table('ads', function (Blueprint $table) {
-            // $table->bigIncrements('id');
-            // $table->string('title');
-            // $table->text('texte');
-            // $table->unsignedBigInteger('category_id');
-            // $table->unsignedBigInteger('region_id');
-            // $table->unsignedBigInteger('user_id')->default(0);
-            // $table->string('departement');
-            // $table->string('commune');
-            // $table->string('commune_name');
-            // $table->string('commune_postal');
-            // $table->string('pseudo');
-            // $table->string('email');
-            // $table->date('limit');
-            $table->integer('price');
-            // $table->boolean('active')->default(false);
-            // $table->timestamps();
-            // $table->foreign('category_id')->references('id')->on('categories');
-            // $table->foreign('region_id')->references('id')->on('regions');
+            $table->bigIncrements('id');
+            $table->string('title');
+            $table->text('texte');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('region_id');
+            $table->unsignedBigInteger('user_id')->default(0);
+            $table->string('departement');
+            $table->string('commune');
+            $table->string('commune_name');
+            $table->string('commune_postal');
+            $table->string('pseudo');
+            $table->string('email');
+            $table->date('limit');
+            $table->integer('prix');
+            $table->boolean('active')->default(false);
+            $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('region_id')->references('id')->on('regions');
         });
     }
 

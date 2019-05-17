@@ -11,6 +11,7 @@
             <div class="card-body">
                 <h4 class="card-title">{{ $ad->title }}</h4>
                 <p class="card-text">{{ $ad->category->name }}</p>
+                <p class="card-text">{{ $ad->prix }}€</p>
                 <p class="card-text">
                     {{ $ad->commune_name . ' (' . $ad->commune_postal . ')'}}<br>
                     {{ $ad->created_at->calendar() }}
