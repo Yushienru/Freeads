@@ -67,4 +67,36 @@ class AdRepository
     {
         return Ad::create($data);
     }
+
+    public function noActiveCount($ads = null)
+    {
+        if($ads) {
+            return $ads->where('active', false)->count();
+        }
+        return Ad::where('active', false)->count();
+    }
+
+    public function obsoleteCount($ads = null)
+    {
+        if($ads) {
+            return $ads->where('active', true)->where('limit', '<', Carbon::now())->count();
+        }
+        return Ad::where('limit', '<', Carbon::now())->count();
+    }
+
+    public function noActive($nbr)
+    {
+        return Ad::whereActive(false)->latest()->paginate($nbr);
+    }
+
+    public function approve($ad)
+    {
+        $ad->active = true;
+        $ad->save();
+    }
+
+    public function delete($ad)
+    {
+        $ad->delete();
+    }
 }

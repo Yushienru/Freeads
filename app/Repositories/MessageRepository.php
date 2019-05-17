@@ -7,4 +7,9 @@ class MessageRepository
     {
         return Message::create($data);
     }
+
+    public function count()
+    {
+        return Message::count();
+    }
 }

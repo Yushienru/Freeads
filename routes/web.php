@@ -50,15 +50,20 @@ Route::prefix('annonces')->group(function () {
 
 // Photos upload management and message
 Route::middleware('ajax')->group(function () {
-    Route::post('message', 'UserController@message')->name('message');
-});
-
-Route::middleware('ajax')->group(function () {
     Route::post('images-save', 'UploadImagesController@store')->name('save-images');
     Route::delete('images-delete', 'UploadImagesController@destroy')->name('destroy-images');
     Route::get('images-server','UploadImagesController@getServerImages')->name('server-images');
+    Route::post('message', 'UserController@message')->name('message');
 });
 
+// Administration
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
+    Route::prefix('annonces')->group(function () {
+        Route::get('/', 'AdminController@ads')->name('admin.ads');
+        Route::middleware('ajax')->group(function () {
+            Route::post('approve/{ad}', 'AdminController@approve')->name('admin.approve');
+            Route::post('refuse', 'AdminController@refuse')->name('admin.refuse');
+        });
+    });
 });
