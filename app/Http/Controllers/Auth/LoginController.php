@@ -36,4 +36,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Set the redirection after login
+     *
+     * @return string
+     */
+    public function redirectTo()
+    {
+        return auth()->user()->admin ? route('admin.index') : route('user.index');
+    }
 }

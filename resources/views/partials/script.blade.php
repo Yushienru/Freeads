@@ -1,15 +1,20 @@
 <script>
+
     $(() => {
+
         const toggleButtons = () => {
             $('#icon').toggle();
             $('#buttons').toggle();
         }
+
         $('.alert-success button').click(() => {
             $('.alert-success').addClass('d-none').removeClass('show');
         });
+
         $('.alert-warning button').click(() => {
             $('.alert-warning').addClass('d-none').removeClass('show');
         });
+
         $('.btn-success').click((e) => {
             e.preventDefault();
             let that = $(e.currentTarget);
@@ -25,11 +30,13 @@
                 that.closest('td').find('i.fa-spinner').hide();
             });
         });
+
         $('.btn-danger').click((e) => {
             e.preventDefault();
             $('#id').val($(e.currentTarget).attr('data-id'));
             $('#messageModal').modal();
         });
+
         $('#messageForm').submit((e) => {
             let that = e.currentTarget;
             e.preventDefault();
@@ -61,4 +68,5 @@
             });
         });
     })
+
 </script>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\ { Category, Region, Ad, Upload };
 use App\Repositories\AdRepository;
-use App\Http\Requests\AdStore;
+use App\Http\Requests\ { AdStore, AdUpdate };
 use Carbon\Carbon;
 
 class AdController extends Controller
@@ -139,9 +139,10 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Ad $ad)
     {
-        //
+        $this->authorize('manage', $ad);
+        return view('edit', compact('ad'));
     }
 
     /**
@@ -151,9 +152,12 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdUpdate $request, Ad $ad)
     {
-        //
+        $this->authorize('manage', $ad);
+        $this->adRepository->update($ad);
+        $request->session()->flash('status', "L'annonce a bien été modifiée.");
+        return back();
     }
 
     /**

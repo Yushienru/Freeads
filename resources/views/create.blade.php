@@ -42,6 +42,13 @@
                     'name' => 'title',
                     'required' => true,
                 ])
+
+                @include('partials.form-group', [
+                    'title' => 'Titre',
+                    'type' => 'text',
+                    'name' => 'title',
+                    'required' => true,
+                ])
                 <div class="form-group">
                     <label for="texte">Texte</label>
                     <textarea class="form-control{{ $errors->has('texte') ? ' is-invalid' : '' }}" id="texte" name="texte" rows="3" required>{{ old('texte', isset($value) ? $value : '') }}</textarea>

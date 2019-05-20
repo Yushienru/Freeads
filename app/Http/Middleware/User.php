@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Admin
+class User
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,6 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        $user = $request->user();
-
-        if ($user && $user->admin) {
-            return $next($request);
-        }
-
-        return redirect()->route('home');
+        return $next($request);
     }
 }

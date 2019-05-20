@@ -31,4 +31,9 @@ class AdPolicy
         }
         return $ad->active;
     }
+
+    public function manage(User $user, Ad $ad)
+    {
+        return $user->id == $ad->user_id;
+    }
 }

@@ -1,7 +1,11 @@
 @extends('layouts.admin')
+
 @section('content')
+
     @include('partials.message', ['url' => route('admin.refuse')])
+
     @include('partials.alerts', ['title' => 'Annonces à modérer'])
+
     <div class="table-responsive">
         <table class="table table-hover">
             <thead class="thead-light">
@@ -25,12 +29,17 @@
             </tbody>
         </table>
     </div>
+
     <div class="d-flex">
         <div class="mx-auto">
             {{ $adModeration->links() }}
         </div>
     </div>
+
 @endsection
+
 @section('script')
+
     @include('partials.script')
+
 @endsection
